@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://hu/uni/miskolc/iit/customer/Facade/bean"
+	xmlns="http://hu/uni/miskolc/iit/customer/Facade/bean" xmlns:customer="http://hu/uni/miskolc/iit/customer/bean"
+	elementFormDefault="qualified">
+
+	<xsd:import namespace="http://hu/uni/miskolc/iit/customer/bean"
+		schemaLocation="hu.uni.miskolc.iit.customer.bean.xsd" />
+
+
+	<xsd:complexType name="GetCustomerFacadeResponse">
+		<xsd:sequence>
+			<xsd:element name="customer" type="customer:Customer"
+				minOccurs="1" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="AddCustomerFacadeResponse">
+		<xsd:sequence>
+			<xsd:element name="message" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="AddCustomerFacadeRequest">
+		<xsd:sequence>
+			<xsd:element name="customer" type="customer:Customer" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="GetCustomerListFacadeReply">
+		<xsd:sequence>
+			<xsd:element name="customer" type="customer:Customer"
+				minOccurs="1" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerDeleteFacadeRequest">
+		<xsd:sequence>
+			<xsd:element name="id" type="customer:customerId" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerDeleteFacadeResponse">
+		<xsd:sequence>
+			<xsd:element name="message" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerSearchFacadeRequest">
+		<xsd:sequence>
+			<xsd:element name="searchCondition" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerSearchFacadeResponse">
+		<xsd:sequence>
+			<xsd:element name="customer" type="customer:Customer"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerEditFacadeRequest">
+		<xsd:sequence>
+			<xsd:element name="customer" type="customer:Customer" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerEditFacadeResponse">
+		<xsd:sequence>
+			<xsd:element name="customer" type="customer:Customer" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="EmailSendRequest">
+		<xsd:sequence>
+			<xsd:element name="subject" type="xsd:string" />
+			<xsd:element name="toEmail" type="xsd:string" />
+			<xsd:element name="message" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="EmailSendResponse">
+		<xsd:sequence>
+			<xsd:element name="message" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

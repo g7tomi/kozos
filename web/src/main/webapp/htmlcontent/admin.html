@@ -1,0 +1,103 @@
+	<div class="generic-container" ng-controller="CustomerController as vm">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="lead">Spring Web MVC + MyBatis + JAXB +
+					AngularJS </span>
+			</div>
+			<div class="formcontainer">
+				<form ng-submit="vm.submit()" name="myForm">
+					<input type="hidden" ng-model="vm.customer.id" />
+					<fieldset class="form-group">
+						<div class="col-xs-4">
+							<label for="formGroupExampleInput">Name</label> <input
+								type="text" class="form-control" ng-model="vm.customer.name"
+								id="uname" placeholder="Enter your name!">
+						</div>
+					</fieldset>
+					<fieldset class="form-group">
+						<div class="col-xs-4">
+							<label for="formGroupExampleInput2">Age</label> <input
+								type="text" class="form-control" ng-model="vm.customer.age"
+								id="age" placeholder="Enter your age!">
+						</div>
+					</fieldset>
+					<fieldset class="form-group">
+						<div class="col-xs-4">
+							<label for="formGroupExampleInput2">E-mail</label> <input
+								type="email" class="form-control" ng-model="vm.customer.email"
+								id="email" placeholder="Enter your e-mail address!">
+						</div>
+					</fieldset>
+					<div class="form-group">
+						<div class="form-group col-md-7">
+							<button class="btn btn-success custom-width" type="submit"
+								value="{{!vm.customer.id ? 'Add' : 'Update'}}">Send</button>
+							<button class="btn btn-warning btn-sm" type="submit"
+								ng-click="vm.reset()">Reset</button>
+
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="tablecontainer">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Name</th>
+							<th>Age</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="u in vm.customers.customer">
+							<td><span>{{u.id}}</span></td>
+							<td><span>{{u.name}}</span></td>
+							<td><span>{{u.age}}</span></td>
+							<td><span>{{u.email}}</span></td>
+							<td>
+								<button type="button" class="btn btn-success custom-width"
+									ng-click="vm.getCustomerById(u.id)">Edit</button>
+								<button type="button" class="btn btn-danger custom-width"
+									ng-click="vm.deleteUser(u.id)">Remove</button>
+							</td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="formcontainer">
+				<form ng-submit="vm.sendEmail()" name="emailForm">
+					<fieldset class="form-group">
+						<div class="col-xs-4">
+							<label for="toEmail">To:</label> <select class="form-control"
+								id="toEmail" ng-model="vm.email.toEmail">
+								<option ng-repeat="u in vm.customers.customer">{{u.email}}</option>
+							</select>
+							<h4>You have selected: {{vm.email.toEmail}}</h4>
+						</div>
+					</fieldset>
+					<fieldset class="form-group">
+						<div class="col-xs-4">
+							<label for="subject">Subject:</label> <input type="text"
+								class="form-control" id="subject" ng-model="vm.email.subject">
+							<h4>Subject: {{ vm.email.subject }}</h4>
+						</div>
+					</fieldset>
+					<fieldset class="form-group">
+						<div class="col-xs-4">
+							<label for="message">Message:</label>
+							<textarea class="form-control" rows="5" id="message"
+								ng-model="vm.email.message"></textarea>
+							<h4>Message: {{ vm.email.message }}</h4>
+						</div>
+					</fieldset>
+					<div class="form-group">
+						<div class="form-group col-md-7">
+							<button class="btn btn-success custom-width" type="submit">Send</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>

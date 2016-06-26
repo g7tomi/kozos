@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
+
+	<Appenders>
+		<File name="dao-impl" fileName="D:\logs\dao-logfile.log" append="true">
+			<PatternLayout
+				pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+		</File>
+		<File name="controller" fileName="D:\logs\controller-logfile.log" append="true">
+			<PatternLayout
+				pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+		</File>
+		<File name="service-impl" fileName="D:\logs\service-impl-logfile.log"
+			append="true">
+			<PatternLayout
+				pattern="%-5p | %d{yyyy-MM-dd HH:mm:ss} | [%t] %C{2} (%F:%L) - %m%n" />
+		</File>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout
+				pattern="[%-5p];%d{yyyy-MM-dd HH:mm:ss};[%t];%C{1};(%F:%L);%m%n" />
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="hu.uni.miskolc.iit.customer.dao.impl" level="info">
+			<AppenderRef ref="STDOUT" />
+			<AppenderRef ref="dao-impl" />
+		</Logger>
+		<Logger name="hu.uni.miskolc.iit.customer.controller" level="info">
+			<AppenderRef ref="STDOUT" />
+			<AppenderRef ref="controller" />
+		</Logger>
+		<Logger name="hu.uni.miskolc.iit.customer.service.impl" level="info">
+			<AppenderRef ref="STDOUT" />
+			<AppenderRef ref="service-impl" />
+		</Logger>
+	</Loggers>
+
+</Configuration>

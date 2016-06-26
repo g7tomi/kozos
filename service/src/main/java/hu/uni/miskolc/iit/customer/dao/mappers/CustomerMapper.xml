@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="hu.uni.miskolc.iit.customer.dao.mappers.CustomerMapper">
+
+	<insert id="addCustomer" parameterType="hu.uni.miskolc.iit.customer.bean.Customer">
+		INSERT INTO customers (
+			name, 
+			age,
+			email 
+		) 
+		VALUES( 
+			#{name},
+			#{age}, 
+			#{email} 
+		)
+	</insert>
+	
+	<delete id="deleteCustomerById" parameterType="Integer">
+		DELETE FROM customers where id = #{id};
+	</delete>
+	
+	<select id="getCustomerList" resultMap="CustomerResultMap">
+		SELECT * FROM customers;
+	</select>
+	
+	<update id="editCustomerById"  parameterType="hu.uni.miskolc.iit.customer.bean.Customer">
+		UPDATE customers SET
+			name = #{name},
+			age = #{age},
+			email = #{email}
+		WHERE id = #{id}
+	</update>
+
+	<resultMap type="hu.uni.miskolc.iit.customer.bean.Customer" id="CustomerResultMap">
+		<result property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="age" column="age" />
+		<result property="email" column="email" />
+	</resultMap>
+
+</mapper>
