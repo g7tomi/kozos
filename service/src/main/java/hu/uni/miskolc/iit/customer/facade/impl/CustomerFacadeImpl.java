@@ -9,6 +9,7 @@ import hu.uni.miskolc.iit.customer.facade.bean.CustomerEditFacadeRequest;
 import hu.uni.miskolc.iit.customer.facade.bean.CustomerEditFacadeResponse;
 import hu.uni.miskolc.iit.customer.facade.bean.CustomerSearchFacadeRequest;
 import hu.uni.miskolc.iit.customer.facade.bean.CustomerSearchFacadeResponse;
+import hu.uni.miskolc.iit.customer.facade.bean.GetCustomerFacadeResponse;
 import hu.uni.miskolc.iit.customer.facade.bean.GetCustomerListFacadeReply;
 import hu.uni.miskolc.iit.customer.service.CustomerService;
 import hu.uni.miskolc.iit.customer.service.bean.AddCustomerServiceRequest;
@@ -18,6 +19,7 @@ import hu.uni.miskolc.iit.customer.service.bean.CustomerDeleteServiceResponse;
 import hu.uni.miskolc.iit.customer.service.bean.CustomerEditServiceRequest;
 import hu.uni.miskolc.iit.customer.service.bean.CustomerEditServiceResponse;
 import hu.uni.miskolc.iit.customer.service.bean.GetCustomerListServiceReply;
+import hu.uni.miskolc.iit.customer.service.bean.GetCustomerServiceResponse;
 import hu.uni.miskolc.iit.email.service.EmailService;
 
 import org.apache.logging.log4j.LogManager;
@@ -98,6 +100,15 @@ public class CustomerFacadeImpl implements CustomerFacade {
 	public CustomerSearchFacadeResponse searchCustomer(CustomerSearchFacadeRequest request) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public GetCustomerFacadeResponse getCustomer() {
+		GetCustomerFacadeResponse facadeResponse = new GetCustomerFacadeResponse();
+		GetCustomerServiceResponse serviceResponse = customerService.getCustomer();
+		
+		BeanUtils.copyProperties(serviceResponse, facadeResponse);
+		
+		return facadeResponse;
 	}
 
 

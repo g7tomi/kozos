@@ -9,6 +9,7 @@ import hu.uni.miskolc.iit.customer.service.bean.CustomerEditServiceResponse;
 import hu.uni.miskolc.iit.customer.service.bean.CustomerSearchServiceRequest;
 import hu.uni.miskolc.iit.customer.service.bean.CustomerSearchServiceResponse;
 import hu.uni.miskolc.iit.customer.service.bean.GetCustomerListServiceReply;
+import hu.uni.miskolc.iit.customer.service.bean.GetCustomerServiceResponse;
 
 
 public interface CustomerService {
@@ -22,4 +23,6 @@ public interface CustomerService {
 	public CustomerSearchServiceResponse searchCustomer(CustomerSearchServiceRequest request);
 	
 	public CustomerEditServiceResponse editCustomerById(CustomerEditServiceRequest request);
+	
+	public GetCustomerServiceResponse getCustomer();
 }

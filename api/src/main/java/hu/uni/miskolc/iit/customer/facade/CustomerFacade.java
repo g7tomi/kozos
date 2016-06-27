@@ -8,6 +8,7 @@ import hu.uni.miskolc.iit.customer.facade.bean.CustomerEditFacadeRequest;
 import hu.uni.miskolc.iit.customer.facade.bean.CustomerEditFacadeResponse;
 import hu.uni.miskolc.iit.customer.facade.bean.CustomerSearchFacadeRequest;
 import hu.uni.miskolc.iit.customer.facade.bean.CustomerSearchFacadeResponse;
+import hu.uni.miskolc.iit.customer.facade.bean.GetCustomerFacadeResponse;
 import hu.uni.miskolc.iit.customer.facade.bean.GetCustomerListFacadeReply;
 
 public interface CustomerFacade {
@@ -21,4 +22,6 @@ public AddCustomerFacadeResponse addCustomer(AddCustomerFacadeRequest request);
 	public CustomerSearchFacadeResponse searchCustomer(CustomerSearchFacadeRequest request);
 	
 	public CustomerEditFacadeResponse editCustomerById(CustomerEditFacadeRequest request);
+	
+	public GetCustomerFacadeResponse getCustomer();
 }

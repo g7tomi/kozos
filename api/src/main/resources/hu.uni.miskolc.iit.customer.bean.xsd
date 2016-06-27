@@ -14,7 +14,6 @@
 			<xsd:element name="name" type="name" />
 			<xsd:element name="age" type="age"/>
 			<xsd:element name="email" type="email"/>
-			<xsd:element name="Customer" type="Customer" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 	</xsd:complexType>
 	

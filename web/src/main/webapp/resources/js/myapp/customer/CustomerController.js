@@ -51,7 +51,7 @@ function CustomerController(CustomerService) {
 	};
 	
 	vm.getCustomerById = function getCustomer(customerId) {
-		var customers = vm.customers.customer;
+		var customers = angular.copy(vm.customers.customer);
 		angular.forEach(customers, function(value,key) {
 			console.log(key + ': ' + value.name);
 			if (value.id == customerId) {
@@ -75,11 +75,6 @@ function CustomerController(CustomerService) {
 	function reset() {
 		vm.customer = {};
 	}
-	
-	vm.sendEmail = function() {
-		var request = vm.email;
-		CustomerService.sendEmailToCustomer(request);
-	};
 	
 };
 

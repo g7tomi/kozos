@@ -7,6 +7,7 @@ import hu.uni.miskolc.iit.customer.facade.bean.CustomerDeleteFacadeRequest;
 import hu.uni.miskolc.iit.customer.facade.bean.CustomerDeleteFacadeResponse;
 import hu.uni.miskolc.iit.customer.facade.bean.CustomerEditFacadeRequest;
 import hu.uni.miskolc.iit.customer.facade.bean.CustomerEditFacadeResponse;
+import hu.uni.miskolc.iit.customer.facade.bean.GetCustomerFacadeResponse;
 import hu.uni.miskolc.iit.customer.facade.bean.GetCustomerListFacadeReply;
 
 import org.apache.logging.log4j.LogManager;
@@ -52,6 +53,11 @@ public class AdminController {
 	@RequestMapping(value = "/editCustomer", method = RequestMethod.POST, headers = "Accept=application/json; charset=utf-8" ) 
 	public @ResponseBody CustomerEditFacadeResponse editCustomer(@RequestBody CustomerEditFacadeRequest request) {
 		return customerFacade.editCustomerById(request);
+	}
+	
+	@RequestMapping(value = "/customer", method = RequestMethod.GET,  headers = "Accept=application/json; charset=utf-8" )
+	public @ResponseBody GetCustomerFacadeResponse getCustomer() {
+		return customerFacade.getCustomer();
 	}
 
 }

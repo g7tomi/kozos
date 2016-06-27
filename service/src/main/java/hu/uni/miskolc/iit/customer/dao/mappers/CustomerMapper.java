@@ -13,5 +13,7 @@ public interface CustomerMapper {
 	public void deleteCustomerById(int id);
 	
 	public void editCustomerById(Customer customer);
+	
+	public Customer getCustomer(String username);
 
 }

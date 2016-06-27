@@ -24,6 +24,10 @@
 		SELECT * FROM customers;
 	</select>
 	
+	<select id="getCustomer" resultMap="CustomerResultMap">
+		SELECT * FROM customers WHERE name = #{name};
+	</select>
+	
 	<update id="editCustomerById"  parameterType="hu.uni.miskolc.iit.customer.bean.Customer">
 		UPDATE customers SET
 			name = #{name},

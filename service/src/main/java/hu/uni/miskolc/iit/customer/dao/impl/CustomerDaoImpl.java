@@ -41,4 +41,8 @@ public class CustomerDaoImpl implements CustomerDao {
 	public void editCustomerById(Customer customer) {
 		customerMapper.editCustomerById(customer);
 	}
+	
+	public Customer getCustomer(String username) {
+		return customerMapper.getCustomer(username);
+	}
 }

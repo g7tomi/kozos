@@ -27,6 +27,7 @@ public class EmailServiceImpl implements EmailService {
 	
 	private String buildSampleModifyNotification(Customer customer) {
 		StringBuilder sb = new StringBuilder();
+		sb.append("<HTML>");
 		sb.append("Dear " + "<b>" + customer.getName() + "</b>" + "your details has been changed! \n");
 		sb.append("Your new details: \n");
 		sb.append("Name:" + customer.getName() + "\n");
@@ -34,13 +35,13 @@ public class EmailServiceImpl implements EmailService {
 		sb.append("Email" + customer.getEmail() + "\n\n");
 		sb.append("<hr>");
 		sb.append("This is an automaticly generated email.");
+		sb.append("</HTML>");
 		
 		return sb.toString();
 	}
 
 	public void sendEditNotification(Customer customer) {
 		SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
-	
 		msg.setFrom(templateMessage.getFrom());
 		msg.setTo(customer.getEmail());
 		msg.setSubject(templateMessage.getSubject());

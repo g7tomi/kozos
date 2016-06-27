@@ -33,6 +33,20 @@ function CustomerService($http, $q) {
 			});
 		},
 		
+		getUser: function() {
+			console.info('service request', angular.toJson(request));
+			return $http({
+                url: 'admin/getCustomer',
+                method: "GET"
+			})
+			.then(function(response) {
+				return response.data;
+			}, function(errResponse) {
+				console.error('Error while creating user');
+				return $q.reject(errResponse);
+			});
+		},
+		
 		deleteUser: function(customerId) {
 			
 			var request = {
@@ -79,20 +93,5 @@ function CustomerService($http, $q) {
 				return $q.reject(errResponse);
 			});
 		},
-		
-		sendEmailToCustomer: function(request) {
-			console.info('service request', angular.toJson(request));
-			return $http({
-                url: 'admin/sendEmail',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                dataType: "json",
-                method: "POST",
-                data: JSON.stringify(request)
-			})
-			
-		}
 	}
 };
