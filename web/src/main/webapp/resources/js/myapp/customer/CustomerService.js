@@ -3,7 +3,7 @@
 function CustomerService($http, $q) {
 	return {
 		fetchAllUsers: function() {
-			return $http.get('getCustomers').then(function(response) {
+			return $http.get('admin/getCustomers').then(function(response) {
 				return response.data;
 			}, function(errResponse) {
 				console.error('Error while fetching users');
@@ -16,7 +16,7 @@ function CustomerService($http, $q) {
 			};
 			console.info('service request', angular.toJson(request));
 			return $http({
-                url: 'addCustomer',
+                url: 'admin/addCustomer',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ function CustomerService($http, $q) {
 			};
 	
 			return $http({
-                url: 'deleteCustomer',
+                url: 'admin/deleteCustomer',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ function CustomerService($http, $q) {
 			};
 			
 			return $http({
-                url: 'editCustomer',
+                url: 'admin/editCustomer',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ function CustomerService($http, $q) {
 		sendEmailToCustomer: function(request) {
 			console.info('service request', angular.toJson(request));
 			return $http({
-                url: 'sendEmail',
+                url: 'admin/sendEmail',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',

@@ -2,7 +2,6 @@ package hu.uni.miskolc.iit.customer.dao.mappers;
 
 import hu.uni.miskolc.iit.customer.bean.Customer;
 
-import java.math.BigInteger;
 import java.util.List;
 
 public interface CustomerMapper {

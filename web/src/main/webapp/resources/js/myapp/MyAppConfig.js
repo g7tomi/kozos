@@ -2,19 +2,24 @@
 function MyAppConfig($stateProvider, $urlRouterProvider, $locationProvider,
 		$httpProvider) {
 	
-	$urlRouterProvider.otherwise('/login-page');
-	$httpProvider.defaults.headers.common["X-Requested-With"] = 'XMLHttpRequest';
+	$urlRouterProvider.otherwise('/');
 	$locationProvider.html5Mode(true);
 
-	$stateProvider.state('login', {
-		url : "/login-page",
+	$stateProvider.state('home', {
+		url : "/",
+		templateUrl : "htmlcontent/home.html"
+	})
+	.state('login', {
+		url : "/login",
+		controller : 'CustomerController',
+		controllerAs : 'vm',
 		templateUrl : "htmlcontent/login.html"
+			
 	})
 	.state('admin', {
 		url : "/admin",
 		controller : 'CustomerController',
 		controllerAs : 'vm',
 		templateUrl : "htmlcontent/admin.html"
-			
 	})
 }
