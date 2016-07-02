@@ -37,8 +37,7 @@
 
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
-	<mvc:resources mapping="/resources/**" location="/resources/" />
-	<mvc:resources mapping="/htmlcontent/**" location="/htmlcontent/" />
+	<mvc:resources mapping="/resources/dist/**" location="/resources/dist/" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
