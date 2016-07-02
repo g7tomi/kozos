@@ -151,6 +151,7 @@ gulp.task('copy:thirdparty', copyThirdParty);
 function copyCSS() {
     return gulp.src([
         'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css',
+        'node_modules/font-awesome/css/font-awesome.css',
     ])
         .pipe(gulp.dest(packageJSON.config.destdir + '/css'));
 }
