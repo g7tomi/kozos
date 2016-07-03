@@ -1,4 +1,4 @@
-function LoginRouteConfig($stateProvider) {
+function LoginRouteConfig($stateProvider, BASE_DIR) {
     "ngInject";
     $stateProvider
             .state('login',
@@ -6,7 +6,7 @@ function LoginRouteConfig($stateProvider) {
 						url : '/login-page',
 						controller : 'LoginController',
 						controllerAs : 'vm',
-						templateUrl : 'resources/dist/beforelogin/login/login.tpl'
+						templateUrl :  BASE_DIR.path+'beforelogin/login/login.tpl'
                     })
 
 }

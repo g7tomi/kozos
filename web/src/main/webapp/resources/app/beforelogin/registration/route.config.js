@@ -1,4 +1,4 @@
-function RegistrationRouteConfig($stateProvider) {
+function RegistrationRouteConfig($stateProvider, BASE_DIR) {
     "ngInject";
     $stateProvider
             .state('registration',
@@ -6,7 +6,7 @@ function RegistrationRouteConfig($stateProvider) {
 						url : '/registration',
 						controller : 'RegistrationController',
 						controllerAs : 'vm',
-						templateUrl : 'resources/dist/beforelogin/registration/registration.tpl'
+						templateUrl : BASE_DIR.path+'beforelogin/registration/registration.tpl'
                     })
 
 }
