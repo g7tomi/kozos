@@ -5,11 +5,9 @@ function RegistrationController(RegistrationFactory) {
         
     vm.registerUser = registerUser;
     
-    
-    
     function registerUser(user) {
-            
-        }
+        RegistrationFactory.registerUser(user);
+    }
 } 
 
 export default RegistrationController;

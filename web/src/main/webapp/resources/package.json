@@ -17,7 +17,8 @@
     "angular-aria": "^1.4.8",
     "angular-messages": "^1.4.8",
     "angular-ui-bootstrap": "*",
-    "bootstrap": "3.3.6"
+    "bootstrap": "^3.3.6",
+    "angular-toastr": "^1.7.0"
   },
   "devDependencies": {
     "bootstrap-sass": "3.3.6",

@@ -17,27 +17,11 @@ var buffer = require('vinyl-buffer')
 var browserify = require('browserify')
 var babelify = require('babelify')
 
-gulp.task('build', ['mybuildjs2', 'copy:thirdparty', 'copy:templates', 'copy:css','copy:fontbootstrap', 'copy:fontawesome','sass']);
-gulp.task('build-develop', [ 'copy:templates', 'sass']);
+gulp.task('build', ['buildjs', 'copy:thirdparty', 'copy:templates', 'copy:css','copy:fontbootstrap', 'copy:fontawesome','sass']);
+gulp.task('build-develop', ['buildjs', 'copy:templates', 'sass']);
 
 
-
-gulp.task('mybuildjs', () =>
-    gulp.src(packageJSON.config.basedir+'app/**/*.js')
-        
-    .pipe(sourcemaps.init())
-          .pipe(babel({
-            presets: ['es2015']
-        }))
-    .pipe(concat('app.js'))
-    .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(packageJSON.config.destdir))
-);
-
-
-
-// Without sourcemaps
-gulp.task('mybuildjs2', function () {
+function buildjs() {
   var bundler = browserify(packageJSON.config.basedir+'app/index.js').transform(babelify, {/* options */ })
 
   return bundler.bundle()
@@ -46,10 +30,11 @@ gulp.task('mybuildjs2', function () {
     .pipe(rename('app.min.js'))
     //.pipe(uglify())
     .pipe(gulp.dest(packageJSON.config.destdir))
-})
-
+}
+gulp.task('buildjs', buildjs);
+          
 function development() {
-    watch([packageJSON.config.basedir + '/scss/app.scss', packageJSON.config.basedir + '/app/**/*.js', packageJSON.config.basedir + '/app/**/*.tpl']
+    watch([packageJSON.config.basedir + '/scss/**/*.scss', packageJSON.config.basedir + '/app/**/*.js', packageJSON.config.basedir + '/app/**/*.tpl']
         , function () {
             gulp.start('build-develop');
         });
@@ -140,7 +125,8 @@ function copyThirdParty() {
             'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
             'node_modules/angular-messages/angular-messages.min.js',
 			'node_modules/angular-touch/angular-touch.min.js',
-            'node_modules/lodash/dist/lodash.min.js'
+            'node_modules/lodash/dist/lodash.min.js',
+            'node_modules/angular-toastr/dist/angular-toastr.tpls.js'
 
     ])
         .pipe(gulp.dest(packageJSON.config.destdir + '/lib'));
@@ -152,6 +138,7 @@ function copyCSS() {
     return gulp.src([
         'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-csp.css',
         'node_modules/font-awesome/css/font-awesome.css',
+        'node_modules/angular-toastr/dist/angular-toastr.css'
     ])
         .pipe(gulp.dest(packageJSON.config.destdir + '/css'));
 }

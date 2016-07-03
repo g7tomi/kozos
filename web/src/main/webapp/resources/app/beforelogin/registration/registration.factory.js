@@ -1,4 +1,4 @@
-function RegistrationFactory( $http, $q, URL_CONFIG){
+function RegistrationFactory($http, URL_CONFIG, toastr){
      "ngInject"
 	
 	var service = {
@@ -7,12 +7,18 @@ function RegistrationFactory( $http, $q, URL_CONFIG){
     return service;
 
     function registerUser(user) {
-        var deferred = $q.defer();
-		deferred.resolve(	
-            $http.post(URL_CONFIG.url + '/register-user', text)
-        );
-		     
-		return deferred.promise;
+         
+        $http.post(URL_CONFIG.url + '/register-user', user).then(success, error);
+        
+        function success(data) {
+            console.log("success");
+            toastr.success('Success', 'Successful registration');
+        }
+        
+        function error(data) {
+            console.log("success");
+            toastr.error('Error', 'Something happened during the registration');
+        }
     }
 }
 
